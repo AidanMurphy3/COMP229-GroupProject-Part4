@@ -1,31 +1,16 @@
+// models/User.js
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true
+const userSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    passwordHash: { type: String, required: true }, // <- must match login/register
+    role: { type: String, enum: ['patient', 'doctor', 'admin'], default: 'patient', index: true },
+    specialty: { type: String }, // for doctors (optional)
+    bio: { type: String }        // optional
   },
+  { timestamps: true }
+);
 
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true
-  },
-
-  password: {
-    type: String,
-    required: true
-  },
-
-  role: {
-    type: String,
-    enum: ['patient', 'admin'],
-    default: 'patient'
-  }
-
-}, { timestamps: true });
-
-// 
 module.exports = mongoose.model('User', userSchema);
