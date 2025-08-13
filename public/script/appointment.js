@@ -119,6 +119,10 @@ document.getElementById('appointmentForm').addEventListener('submit', async (e) 
 });
 
 // Init
+<<<<<<< HEAD
+=======
+loadDoctors().then(loadAppointments);
+>>>>>>> 05ca69d7910ac218c490ccf3411a4d9904e3aeb5
 
 
 
@@ -135,4 +139,7 @@ if (res.ok) {
   } catch (_) {}
   alert(msg);
 }
+<<<<<<< HEAD
 loadDoctors().then(loadAppointments);
+=======
+>>>>>>> 05ca69d7910ac218c490ccf3411a4d9904e3aeb5
